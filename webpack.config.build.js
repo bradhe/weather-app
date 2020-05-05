@@ -10,6 +10,7 @@ require('dotenv').config()
 
 module.exports = {
   entry: [
+    '@babel/polyfill',
     './src/client/index',
     './src/app/styles/application.scss'
   ],
@@ -48,7 +49,7 @@ module.exports = {
     ])
   ],
   output: {
-    path: path.join(__dirname, 'assets'),
+    path: path.join(__dirname, 'build', 'assets'),
     filename: 'client.js'
   }
 }

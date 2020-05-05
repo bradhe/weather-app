@@ -5,7 +5,7 @@ import app from './server'
 let currentApp = null;
 
 const server = http.createServer(app)
-server.listen(3000)
+server.listen(process.env.PORT || 3000)
 
 const setApp = (app) => {
   if (currentApp) {
@@ -13,7 +13,13 @@ const setApp = (app) => {
     server.on('request', app)
   }
 
-  app.use('/assets', express.static('src/app/static'));
+  if (process.env.NODE_ENV === 'production') {
+    // We add in serving static assets because we don't have capabilities to do
+    // so as part of the standard server package.
+    app.use('/assets', express.static('build/assets'))
+  } else {
+    app.use('/assets', express.static('src/app/static'));
+  }
 
   currentApp = app
 };
