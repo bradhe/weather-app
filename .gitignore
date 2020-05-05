@@ -1,0 +1,11 @@
+#
+# Development artifacts
+#
+*.sw[onp]
+/.env
+
+#
+# Build artifacts
+#
+/node_modules
+/build

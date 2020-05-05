@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html {{{helmet.htmlAttributes}}}>
+  <head>
+    {{{helmet.title}}}
+    {{{helmet.meta}}}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,  initial-scale=1">
+    {{{helmet.link}}}
+    <script>window.__PRELOADED_STATE__= {{{preloadedState}}};</script>
+
+    <link href="//{{{client_bundle_host}}}/main.css" rel="stylesheet" />
+  </head>
+  <body {{{helmet.bodyAttributes}}}>
+    <div id="root">{{{application}}}</div>
+    <script src="//{{{client_bundle_host}}}/client.js"></script>
+  </body>
+</html>

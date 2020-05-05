@@ -1,0 +1,36 @@
+@import "variables";
+@import "~bootstrap/scss/bootstrap";
+
+////
+// These overrides are specifically for the react-daterange-picker settings.'
+//
+$selection-radius: 0px;
+$selection-margin: 0px;
+
+html, body, #root {
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.weather-conditions, .weather-temperature {
+  display: block;
+  text-align: center;
+}
+
+.weather-conditions {
+  font-size: 8em;
+}
+
+.weather-temperature {
+  font-weight: bold;
+
+  &::after {
+    content: ' °F';
+  }
+}
