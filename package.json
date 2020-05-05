@@ -4,13 +4,15 @@
   "description": "An isomorphic React app that tells you what the weather is today.",
   "main": "src/index.js",
   "scripts": {
+    "clean": "rm -rf build",
+    "build-babel": "babel -d ./build ./src -s",
+    "build": "npm run clean && npm run build-babel && webpack --config=webpack.config.build.js",
     "test": "NODE_ENV=test mocha --recursive --require @babel/register --require @babel/polyfill",
     "test:ci": "NODE_ENV=test mocha --recursive --require @babel/register --require @babel/polyfill --reporter mocha-junit-reporter",
     "start:server": "webpack --mode=development --config=webpack.config.server.js",
     "start:client": "webpack-dev-server --mode=development --config=webpack.config.client.js",
     "start": "npm-run-all --parallel start:server start:client",
-    "pretest": "NODE_ENV=test babel-node ./scripts/db/migrate",
-    "build": "./node_modules/.bin/webpack --config=webpack.config.build.js"
+    "pretest": "NODE_ENV=test babel-node ./scripts/db/migrate"
   },
   "repository": {
     "type": "git",
@@ -23,12 +25,12 @@
   },
   "homepage": "https://github.com/bradhe/weather-app#readme",
   "dependencies": {
-    "axios": "^0.18.1",
     "@babel/core": "^7.6.2",
     "@babel/polyfill": "^7.6.0",
     "@babel/preset-env": "^7.6.2",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.6.2",
+    "axios": "^0.18.1",
     "babel-loader": "^8.0.6",
     "babel-preset-react": "^6.24.1",
     "bootstrap": "^4.3.1",
@@ -64,6 +66,7 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "@babel/node": "^7.6.2",
     "bootstrap": "^4.3.1",
     "chai": "^4.2.0",
