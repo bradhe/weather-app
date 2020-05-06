@@ -16,16 +16,9 @@ app.use(context, log);
 const processWeatherResponse = (body) => {
   const data = JSON.parse(body); 
 
-  if (!data) {
-    return {
-      conditions: 'unknown',
-      temp: 0,
-    };
-  }
-
   return {
-    conditions: data.weather[0].main,
-    temp: data.main.feels_like,
+    conditions: data.weather ? data.weather[0].main : 'unknown',
+    temp: data.main ? data.main.feels_like : 0.0,
   };
 };
 
