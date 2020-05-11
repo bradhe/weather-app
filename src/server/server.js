@@ -17,8 +17,8 @@ const processWeatherResponse = (body) => {
   const data = JSON.parse(body); 
 
   return {
-    conditions: data.weather[0].main,
-    temp: data.main.feels_like,
+    conditions: data.weather ? data.weather[0].main : 'unknown',
+    temp: data.main ? data.main.feels_like : 0.0,
   };
 };
 

@@ -1,6 +1,7 @@
 import http from 'http'
 import express from 'express';
 import app from './server'
+import { Client } from 'guardtower';
 
 import guardtower from 'guardtower';
 
