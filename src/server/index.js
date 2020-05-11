@@ -1,8 +1,6 @@
 import http from 'http'
 import express from 'express';
 import app from './server'
-import { Client } from 'guardtower';
-
 import guardtower from 'guardtower';
 
 let currentApp = null;
@@ -19,7 +17,7 @@ if (process.env.NODE_ENV === 'production') {
   const priv = process.env.GUARDTOWER_PRIVATE_KEY;
 
   // Start the guardtower agent to monitor for vulnerabilities.
-  guardtower.start(pub, priv, require('guardtower.gen.js'));
+  guardtower.start(pub, priv, require('./guardtower.gen.js'));
 }
 
 const setApp = (app) => {
