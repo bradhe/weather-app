@@ -2,10 +2,24 @@ import http from 'http'
 import express from 'express';
 import app from './server'
 
+import guardtower from 'guardtower';
+
 let currentApp = null;
 
 const server = http.createServer(app)
 server.listen(process.env.PORT || 3000)
+
+if (process.env.NODE_ENV === 'production') {
+  guardtower.on('vulnerable', (vulnerabilities) => {
+    console.log('vulnerabilities found! should we tell someone?', vulnerabilities);
+  });
+
+  const pub = process.env.GUARDTOWER_PUBLIC_KEY;
+  const priv = process.env.GUARDTOWER_PRIVATE_KEY;
+
+  // Start the guardtower agent to monitor for vulnerabilities.
+  guardtower.start(pub, priv, require('guardtower.gen.js'));
+}
 
 const setApp = (app) => {
   if (currentApp) {
