@@ -1,6 +1,6 @@
 {
   "name": "weather-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An isomorphic React app that tells you what the weather is today.",
   "main": "src/index.js",
   "scripts": {
