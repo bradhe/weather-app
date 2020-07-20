@@ -40,7 +40,7 @@
     "dotenv-webpack": "^1.7.0",
     "express": "^4.17.1",
     "guardtower": "^0.2.7",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "moment": "^2.24.0",
     "moment-range": "^4.0.2",
     "mustache": "^3.1.0",
